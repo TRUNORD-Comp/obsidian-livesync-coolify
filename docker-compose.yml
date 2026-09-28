@@ -14,6 +14,11 @@ services:
       # deployment log shows you. Keep every identifier a single word.
       - COUCHDB_PASSWORD=${SERVICE_PASSWORD_64_COUCHDBADMIN}
       - SERVICE_FQDN_COUCHDB_5984
+      # TRUNORD: Personen-Passwörter auch im couchdb-Container verfügbar machen, damit
+      # Wartungsbefehle im Coolify-Terminal (Rebuild-Prozedur, Runbook A6) ohne
+      # Copy-Paste von Passwörtern auskommen: -d "\"$LIVESYNC_PASSWORD_PRIVAT\""
+      - LIVESYNC_PASSWORD_TRUNORD=${SERVICE_PASSWORD_64_TRUNORD}
+      - LIVESYNC_PASSWORD_PRIVAT=${SERVICE_PASSWORD_64_PRIVAT}
     volumes:
       - couchdb-data:/opt/couchdb/data
     expose:
